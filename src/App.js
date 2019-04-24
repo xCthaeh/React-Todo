@@ -17,7 +17,6 @@ function addTask(obj, task) {
 }
 
 function editTask(obj, id) {
-  console.log("edit task");
   for (let i = 0; i < obj.todo.length; i++) {
     if (obj.todo[i].id === id) {
       obj.todo[i].completed = !obj.todo[i].completed;
@@ -27,7 +26,6 @@ function editTask(obj, id) {
 }
 
 function handleClearing(obj) {
-  console.log("handleClearing");
   const filtered = obj.todo.filter(item => item.completed === false);
   const filtered2 = obj.searched.filter(item => item.completed === false);
   obj.todo = filtered;
@@ -44,7 +42,6 @@ function searching(obj, string) {
     showSearch = true;
     return obj;
   } else if (string.length === 0) {
-    console.log("empty");
     obj.searched = obj.todo;
     showSearch = false;
     return obj;
@@ -84,7 +81,6 @@ class App extends React.Component {
   };
 
   handleClear = () => {
-    console.log("in the class body, handle clear");
     this.setState(handleClearing(this.state));
   };
 
