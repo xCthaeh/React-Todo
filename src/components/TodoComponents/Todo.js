@@ -9,7 +9,7 @@ class Todo extends React.Component {
     return (
       <ul
         style={{
-          textDecoration: this.props.completed ? "line-through" : "none" 
+          textDecoration: this.props.completed ? "line-through" : "none"
         }}
         onClick={this.handleClick}
       >
