@@ -54,6 +54,7 @@ input {
 input[type="submit"] {
   background-color: var(--box-color);
   color: var(--font-color);
+  
 }
 
 button {
