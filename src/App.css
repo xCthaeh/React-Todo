@@ -20,6 +20,7 @@
 
 li {
   display: list-item;
+  color:black;
 }
 
 ul {
@@ -35,8 +36,8 @@ p {
   background-color: var(--box-color);
   padding: 40px;
   width: 70%;
-  margin-left: 100px;
-  margin-top: 40px;
+  margin-left: 10%;
+  margin-top: 2%;
   border: 5px double black;
 }
 
@@ -79,3 +80,4 @@ img {
   margin: 0px 5%;
   padding: 5px 5% 0px 5%;
 }
+
