@@ -2,6 +2,7 @@ import React from 'react';
 
 import TodoList from './components/TodoComponents/TodoList.js';
 import TodoForm from './components/TodoComponents/TodoForm.js';
+import SearchBar from './components/TodoComponents/SearchBar.js';
 import './App.css'
 
 let showSearch = false;
