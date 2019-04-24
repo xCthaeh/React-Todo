@@ -37,6 +37,7 @@ p {
   width: 70%;
   margin-left: 100px;
   margin-top: 40px;
+  border: 5px double black;
 }
 
 .form {
