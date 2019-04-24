@@ -1,13 +1,102 @@
 import React from 'react';
 
+import TodoList from './components/TodoComponents/TodoList.js';
+import TodoForm from './components/TodoComponents/TodoForm.js';
+import './App.css'
+
+let showSearch = false;
+
+function addTask(obj, task) {
+  obj.todo.push({
+    task: task,
+    id: Date.now(),
+    completed: false,
+  });
+  return obj;
+}
+
+function editTask(obj, id) {
+  console.log("edit task")
+  for (let i=0;i<obj.todo.length;i++) {
+    if (obj.todo[i].id === id) {
+      obj.todo[i].completed = !obj.todo[i].completed
+    }
+  }
+  return obj;
+}
+
+function handleClearing(obj) {
+  console.log("handleClearing");
+  const filtered = obj.todo.filter(item => item.completed === false)
+  const filtered2 = obj.searched.filter(item => item.completed === false)
+  obj.todo = filtered;
+  obj.searched = filtered2;
+  return obj;
+}
+
+function searching(obj, string) {
+  if (string.length > 0) {
+    const searched_array = obj.todo.filter( item => { return (item.task.toUpperCase().indexOf(string.toUpperCase()) > -1)});
+    obj.searched = searched_array;
+    showSearch = true;
+    return obj
+  }
+  else if (string.length === 0) {
+    console.log("empty")
+    obj.searched = obj.todo;
+    showSearch = false;
+    return obj
+  }
+}
+
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
+  constructor(props) {
+    super(props);
+    this.state = {
+      todo : [],
+      searched: []
+    }
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem("todo")) {
+      this.setState({todo : JSON.parse(localStorage.getItem("todo")), searched: JSON.parse(localStorage.getItem("todo")) });
+    } else {
+      localStorage.setItem("todo", JSON.stringify([]));
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("todo", JSON.stringify(this.state.todo));
+  }
+
+  handleAdd = task => {
+    this.setState(addTask(this.state, task));
+  };
+
+  todoChange = (id) => {
+    this.setState(editTask(this.state, id));
+  }
+
+  handleClear = () => {
+    console.log("in the class body, handle clear")
+    this.setState(handleClearing(this.state));
+  }
+
+  handleSearchBar = (string) => {
+    this.setState(searching(this.state, string), () => {});
+
+  }
+
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
+      <div className="app">
+        <img className="logo" src={require('./img/logo.jpg')}></img>
+
+        <SearchBar handleSearchBar={this.handleSearchBar}/>
+
+        <TodoList todoChange={this.todoChange} list={showSearch ? this.state.searched : this.state.todo}/>
+        <TodoForm handleClear={this.handleClear} onAdd={this.handleAdd}/>
       </div>
     );
   }
