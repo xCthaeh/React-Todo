@@ -1,0 +1,83 @@
+* {
+  border-spacing: border-box;
+  font-family: "Anton", sans-serif;
+}
+
+:root {
+  --box-color: white;
+  --bg-color: rgb(165, 12, 12);
+  --font-color: rgb(27, 21, 21);
+}
+
+.app {
+  margin: 0 auto;
+  max-width: 1000px;
+  background: var(--bg-color);
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  display: list-item;
+  color:black;
+}
+
+ul {
+  font-size: 24px;
+  list-style-type: square;
+}
+
+p {
+  font-size: 24px;
+}
+
+.list {
+  background-color: var(--box-color);
+  padding: 40px;
+  width: 70%;
+  margin-left: 10%;
+  margin-top: 2%;
+  border: 5px double black;
+}
+
+.form {
+  margin: 0px 5%;
+  padding: 5px 5% 100px 5%;
+}
+
+input {
+  font-size: 18px;
+  margin: 10px 2%;
+  padding: 10px 2%;
+  border-radius: 10px;
+  border: 8px double black;
+}
+
+input[type="submit"] {
+  background-color: var(--box-color);
+  color: var(--font-color);
+  
+}
+
+button {
+  font-size: 18px;
+  margin: 10px 2%;
+  padding: 10px 2%;
+  border-radius: 10px;
+  background-color: var(--box-color);
+  color: var(--font-color);
+  border: 8px double black;
+}
+
+img {
+  max-width: 519px;
+  height: auto;
+  align-self: center;
+}
+
+.search-bar {
+  margin: 0px 5%;
+  padding: 5px 5% 0px 5%;
+}
+
